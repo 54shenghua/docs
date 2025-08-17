@@ -1,12 +1,16 @@
+import * as React from "react"
+
 import { clsxm } from "~/lib/helper"
 
 import { MotionButtonBase } from "./MotionButton"
 
-export const RoundedIconButton: typeof MotionButtonBase = ({
-  ref,
+export const RoundedIconButton = ({
   className,
   children,
+  ref,
   ...rest
+}: React.ComponentProps<typeof MotionButtonBase> & {
+  ref?: React.Ref<HTMLButtonElement>
 }) => {
   return (
     <MotionButtonBase
