@@ -1,0 +1,18 @@
+[
+  {
+    "paths": [
+      "whats-this.md"
+    ],
+    "slug": "guide",
+    "title": "开始"
+  },
+  {
+    "paths": [
+      "custom-component.md",
+      "highlight.md",
+      "markdown.md"
+    ],
+    "slug": "usage",
+    "title": "使用"
+  }
+]
