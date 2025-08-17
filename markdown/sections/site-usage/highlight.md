@@ -34,7 +34,7 @@
     "title": "开始"
   },
   {
-    "paths": ["./sections/usage/markdown.md"],
+    "paths": ["./sections/site-usage/markdown.md"],
     "title": "使用"
   }
 ]

@@ -2,15 +2,48 @@
 
 import type { Zoom } from "medium-zoom"
 import mediumZoom from "medium-zoom"
+import { usePathname } from "next/navigation"
 import * as React from "react"
 import { useEffect, useRef, useState } from "react"
 
 import { isServerSide } from "~/lib/env"
 import { isVideoExt } from "~/lib/mine-type"
 
-import { Divider } from "../../divider/Divider"
+import { Divider } from "../../divider"
 
 let zoomer: Zoom
+
+// 处理图片路径的辅助函数
+const resolveImagePath = (src: string, currentPath: string) => {
+  // 如果是绝��路径或外部链接，直接返回
+  if (src.startsWith("http") || src.startsWith("/")) {
+    return src
+  }
+
+  // 处理相对路径
+  if (src.startsWith("./")) {
+    // 从当前路径中提取目录信息
+    const pathParts = currentPath.split("/")
+    if (pathParts.length >= 3) {
+      // /reading/cate/slug
+      const cate = pathParts[2]
+      const imageName = src.replace("./", "")
+      return `/images/${cate}/${imageName}`
+    }
+  }
+
+  // 如果是直接的文件名，也处理为相对路径
+  if (!src.includes("/")) {
+    const pathParts = currentPath.split("/")
+    if (pathParts.length >= 3) {
+      const cate = pathParts[2]
+      return `/images/${cate}/${src}`
+    }
+  }
+
+  return src
+}
+
 export const MarkdownImage = (props: {
   src: string
   alt?: string
@@ -18,8 +51,14 @@ export const MarkdownImage = (props: {
   height?: number
 }) => {
   const { src, alt } = props
+  const pathname = usePathname()
+
+  // 解析图片路径
+  const resolvedSrc = resolveImagePath(src, pathname)
+
   const nextProps = {
     ...props,
+    src: resolvedSrc,
   }
   nextProps.alt = alt?.replace(/^[¡!]/, "")
   const [zoom] = useState(() => {
@@ -59,6 +98,6 @@ export const MarkdownImage = (props: {
       </div>
     )
   } else {
-    return <img ref={imageRef} {...nextProps} />
+    return <img ref={imageRef} alt={nextProps.alt || ""} {...nextProps} />
   }
 }

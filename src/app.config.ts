@@ -16,24 +16,25 @@ export const CONFIG = {
   /**
    * public book hostname
    */
-  urlBase: "https://nextjs-book.innei.in",
+  urlBase: "https://docs.54sher.com",
 }
 
 export const SEO = {
   title: {
-    absolute: "Book SSG Template",
-    template: `%s | ${"Book SSG Template"}`,
+    absolute: "升华工作室文档",
+    template: `%s | ${"升华工作室文档"}`,
   },
   metadataBase: new URL(CONFIG.urlBase),
-  twitter: {
-    card: "summary_large_image",
-    creator: "@__oQuery",
-    site: "https://innei.in",
-  },
+  // twitter: {
+  //   card: "summary_large_image",
+  //   creator: "@__oQuery",
+  //   site: "https://innei.in",
+  // },
   openGraph: {
     type: "book",
-    authors: ["innei"],
-    tags: ["nextjs"],
+    authors: ["grtsinry43", "steamfinder"],
+    tags: ["54sher", "升华工作室", "文档", "docs", "nextjs", "react"],
+    locale: "zh-CN",
     images: [],
   },
 } satisfies Metadata

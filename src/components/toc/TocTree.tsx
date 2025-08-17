@@ -41,7 +41,7 @@ function useActiveId($headings: HTMLHeadingElement[]) {
     return () => {
       observer.disconnect()
     }
-  }, [$headings])
+  }, [$headings, setActiveId])
 
   return [activeId, setActiveId] as const
 }
@@ -89,22 +89,25 @@ export const TocTree: Component<
   )
 
   const tocRef = useStateToRef(toc)
-  const handleScrollTo = useCallback((i: number, $el: HTMLElement | null, anchorId: string) => {
-    onItemClick?.(tocRef.current[i])
+  const handleScrollTo = useCallback(
+    (i: number, $el: HTMLElement | null, anchorId: string) => {
+      onItemClick?.(tocRef.current[i])
 
-    if ($el) {
-      const handle = () => {
-        springScrollToElement($el, -100).then(() => {
-          setActiveId?.(anchorId)
-        })
+      if ($el) {
+        const handle = () => {
+          springScrollToElement($el, -100).then(() => {
+            setActiveId?.(anchorId)
+          })
+        }
+        if (scrollInNextTick) {
+          requestAnimationFrame(() => {
+            handle()
+          })
+        } else handle()
       }
-      if (scrollInNextTick) {
-        requestAnimationFrame(() => {
-          handle()
-        })
-      } else handle()
-    }
-  }, [])
+    },
+    [onItemClick, scrollInNextTick, setActiveId, tocRef],
+  )
   const accessoryElement = useMemo(() => {
     if (!accessory) return null
     return React.isValidElement(accessory) ? accessory : React.createElement(accessory as FC)
@@ -153,7 +156,7 @@ const MemoedItem = memo<{
     // containerRef
   } = props
 
-  const itemRef = useRef<HTMLElement>(null)
+  const itemRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!isActive) return

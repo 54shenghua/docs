@@ -1,18 +1,52 @@
 [
   {
     "paths": [
-      "whats-this.md"
+      "get-started.md"
     ],
     "slug": "guide",
-    "title": "开始"
+    "title": "guide"
+  },
+  {
+    "paths": [
+      "backend-introduce.md",
+      "content-guide.md",
+      "frontend-introduce.md",
+      "index.md",
+      "language.md",
+      "style.md"
+    ],
+    "slug": "shenghua-web",
+    "title": "shenghua-web"
+  },
+  {
+    "paths": [
+      "index.md",
+      "less-media-variable.md",
+      "wx-js-sdk-config.md"
+    ],
+    "slug": "solutions",
+    "title": "解决方案"
+  },
+  {
+    "paths": [
+      "index.md",
+      "part1.md",
+      "part2.md",
+      "part3.md",
+      "part4.md",
+      "part5.md"
+    ],
+    "slug": "styleguide",
+    "title": "代码规范"
   },
   {
     "paths": [
       "custom-component.md",
       "highlight.md",
-      "markdown.md"
+      "markdown.md",
+      "whats-this.md"
     ],
-    "slug": "usage",
-    "title": "使用"
+    "slug": "site-usage",
+    "title": "site-usage"
   }
 ]

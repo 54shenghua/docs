@@ -1,6 +1,7 @@
 import type { HTMLMotionProps, m, TargetAndTransition } from "framer-motion"
 
 export interface BaseTransitionProps extends HTMLMotionProps<"div"> {
+  ref?: React.RefObject<HTMLDivElement | null>
   duration?: number
 
   timeout?: {
