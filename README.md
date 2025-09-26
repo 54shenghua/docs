@@ -1,51 +1,107 @@
-# Book SSG Template
+# 54sh 文档站
 
-Yet another template for document SSG.
+> 中南大学网络信息部/升华工作室文档中心
 
-## Motivation
+### 🎯 文档内容
 
-I kind of want to write a booklet, but don't want to use an off-the-shelf SSG tool like vite , nextra or others. For one, it's too heavy to write and probably not for me, and secondly, using these tools would require me to make a lot of tweaks to the default styles. So I wrote an SSG tool from scratch. The good thing is that Next.js is really great at SSG.
+- **项目指南** - 升华网项目概述、技术栈介绍、开发团队信息
+- **代码规范** - 前后端开发规范、Git 工作流、代码审查标准
+- **解决方案** - 常见技术问题的解决方案和最佳实践
+- **使用指南** - 文档站使用说明、Markdown 编写规范
 
-Uses Next.js App Router + Server Component to optimize the package size of the SSG generated product to a greater extent.
+### 🏗️ 技术架构
 
-In any case, it's still all about the writing. The focus of this template is ultimately on writing the content and the final UI rendering.
+- **框架**: Next.js 15.2.5
+- **样式**: Tailwind CSS + DaisyUI
+- **内容**: Markdown 驱动
+- **部署**: 静态站点生成 (SSG)
+- **包管理**: pnpm
 
-Online preview of this template:
+## 🚀 快速开始
 
-[Demo](https://book-template.innei.in)
+### 环境要求
 
-## Features
+- Node.js 18+ 
+- pnpm 9.12.3+
 
-- Markdown support with [Shiro Flavored Markdown](https://shiro.innei.in/#/markdown)
-- Page Open Graph and SEO support
-- Nice UI
-- Mobile responsive
+### 本地开发
 
-## Using this template
+1. **克隆项目**
+   ```bash
+   git clone https://github.com/54shenghua/docs.git
+   cd docs
+   ```
+
+2. **安装依赖**
+   ```bash
+   pnpm install
+   ```
+
+3. **启动开发服务器**
+   ```bash
+   pnpm dev
+   ```
+
+4. **访问站点**
+   
+   打开浏览器访问 [http://localhost:9988](http://localhost:9988)
+
+### 构建部署
 
 ```bash
-git clone https://github.com/Innei/book-ssg-template
+# 构建生产版本
+pnpm build
+
+# 启动生产服务器
+pnpm start
 ```
 
-Alternatively, you can click Fork this project/use this template.
+## 📝 参与贡献
 
-## Configuration items
+### 文档编写
 
-In `src/app.config.ts`, you can optionally change some of the configuration.
+1. Fork 本仓库到您的 GitHub 账户
+2. 创建新的功能分支
+3. 在 `markdown/sections/` 目录下编写或修改文档
+4. 提交 Pull Request
 
-| Variables | Types                                                                                   | Descriptions                                         |
-| --------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| `SEO`     | [`Metadata`](https://nextjs.org/docs/app/building-your-application/optimizing/metadata) | Configuration for SEO, provided by Next.js           |
-| `DONATE`  | `object`                                                                                | Sponsored Button content, links and images           |
-| `CONFIG`  | `object`                                                                                | Related Configurations                               |
-| `DONATE`  | `object`                                                                                | Sponsored Configuration, Links and Images for Button |
+### 文档结构
 
-## More..
+```
+markdown/sections/
+├── guide/           # 项目指南
+├── shenghua-web/    # 升华网项目文档
+├── styleguide/      # 代码规范
+├── solutions/       # 解决方案
+└── site-usage/      # 使用指南
+```
 
-For more details and usage, plz go to [Documentation](https://book-template.innei.in).
+### 编写规范
 
-## License
+- 使用 Markdown 格式编写
+- 遵循现有的文档结构和命名规范
+- 保持内容简洁明了，逻辑清晰
+- 适当使用提示框、警告框等组件增强可读性
 
-2024 © Innei, Released under the MIT License.
+## 📋 可用脚本
 
-> [Personal Website](https://innei.in/) · GitHub [@Innei](https://github.com/innei/)
+```bash
+pnpm dev          # 启动开发服务器
+pnpm build        # 构建生产版本
+pnpm start        # 启动生产服务器
+pnpm lint         # 代码检查
+pnpm format       # 代码格式化
+```
+
+## 📄 许可证
+
+本项目采用 [MIT 许可证](LICENSE)。
+
+## 🤝 联系我们
+
+- **项目仓库**: [https://github.com/54shenghua/docs](https://github.com/54shenghua/docs)
+- **升华网项目**: [https://github.com/54shenghua/shenghua-web](https://github.com/54shenghua/shenghua-web)
+
+---
+
+*最后更新: 2025年 9月*
